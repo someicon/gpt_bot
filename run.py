@@ -29,11 +29,11 @@ async def cmd_start(message: Message):
 
 
 async def start_bot(bot: Bot):
-    await bot.send_message(os.getenv("ADMINS"), text="Бот запущен!")
+    await bot.send_message(os.getenv("ADMINS_ID"), text="Бот запущен!")
 
 
 async def stop_bot(bot: Bot):
-    await bot.send_message(os.getenv("ADMINS"), text="Бот остановлен!")
+    await bot.send_message(os.getenv("ADMINS_ID"), text="Бот остановлен!")
 
 
 async def main():
