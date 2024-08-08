@@ -7,7 +7,7 @@ def get_keyboard(
     placeholder: str = None,
     request_contact: int = None,
     request_location: int = None,
-    size: tuple[int] = (2,),
+    sizes: tuple[int] = (2,),
 ):
     '''
     Parameters request_contact and request_location must be indexes of btns args for buttons u need
@@ -36,7 +36,7 @@ def get_keyboard(
         else:
             keyboard.add(KeyboardButton(text=text))
 
-    return keyboard.adjust(*size).as_markup(resize_keyboard=True,
+    return keyboard.adjust(*sizes).as_markup(resize_keyboard=True,
                                             input_field_placeholder=placeholder)
 
 

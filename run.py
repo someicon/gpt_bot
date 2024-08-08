@@ -1,3 +1,9 @@
+from handlers.user_private import user_private_router
+from aiogram.client import default
+from aiogram.enums import ParseMode
+from aiogram.types import Message
+from aiogram.filters import Command
+from aiogram import Dispatcher, Bot
 import asyncio
 import os
 import logging
@@ -5,27 +11,15 @@ import logging
 from dotenv import load_dotenv
 load_dotenv()
 
-from aiogram import Dispatcher, Bot
-from aiogram.filters import Command
-from aiogram.types import Message
-from aiogram.enums import ParseMode
-from aiogram.client import default
-
-from handlers.user_private import user_private_router
-
 
 bot = Bot(
     token=os.getenv("TOKEN"),
-    default=default.DefaultBotProperties(parse_mode=ParseMode.HTML)
+    # default=default.DefaultBotProperties(parse_mode=ParseMode.HTML)
 )
 
 dp = Dispatcher()
 
 ALLOWED_UPDATES = ["Message", "CallbackQuery"]
-
-@dp.message(Command('start'))
-async def cmd_start(message: Message):
-    await message.answer("Добро пожаловать в чат!")
 
 
 async def start_bot(bot: Bot):
