@@ -13,9 +13,8 @@ user_private_router = Router()
 
 START_KB = get_keyboard(
     "Задать вопрос",
-    "Выйти",
     placeholder="Выберете действие",
-    sizes=(2, )
+    sizes=(1, )
 )
 
 
