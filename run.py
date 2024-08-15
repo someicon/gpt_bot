@@ -1,7 +1,7 @@
 from handlers.user_private import user_private_router
 from aiogram.client import default
 from aiogram.enums import ParseMode
-from aiogram.types import Message
+from aiogram.types import Message, BotCommandScopeAllPrivateChats
 from aiogram.filters import Command
 from aiogram import Dispatcher, Bot
 import asyncio
@@ -10,6 +10,8 @@ import logging
 
 from dotenv import load_dotenv
 load_dotenv()
+
+from common.cmd_list import private
 
 
 bot = Bot(
@@ -39,6 +41,7 @@ async def main():
     dp.include_router(user_private_router)
 
     await bot.delete_webhook(drop_pending_updates=True)
+    await bot.set_my_commands(commands=private, scope=BotCommandScopeAllPrivateChats())
 
     try:
         await dp.start_polling(bot, allowed_updates=ALLOWED_UPDATES)
